@@ -1,0 +1,21 @@
+{% load static %}
+<link rel = "stylesheet" href="{% static 'polls/style.css' %}">
+
+{% if latest_question_list %}
+	<ul>
+		{% for question in latest_question_list %}
+		<!-- this is hard coding 
+			
+		<li><a href = "/polls/{{ question.id }}/">
+			{{ question.question_text}}</a></li>
+		-->
+		<!-- url polls:detail: use detail view in the app_name = 'polls' -->
+		<li><a href="{% url 'polls:detail' question.id %}">
+					{{ question.question_text }}
+				</a>
+			</li>
+			{% endfor %}
+	</ul>
+	{% else %}
+	<p>No polls are available.</p>
+	{% endif %}
